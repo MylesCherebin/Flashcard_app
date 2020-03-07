@@ -4,7 +4,7 @@
 ## Lab 2
 
 ### App Description
-The user can now make their own flash card. When the add button is clicked they can input their own uestoin and answer and save it by pressing the save button. It then appears on the main screen. An edit button can be clicked as well that lets them edit a card that has been saved.
+The user can now make their own flash card. When the add button is clicked they can input their own question and answer and save it by pressing the save button. It then appears on the main screen. An edit button can be clicked as well that lets them edit a card that has been saved. If the user decides they do not want to create a new card after having already clicked the add button they can click the cancel button to return to the main screen.
 
 ### App Walk-though
 
