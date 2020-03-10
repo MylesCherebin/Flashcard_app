@@ -17,9 +17,9 @@ public class AddCardActivity extends AppCompatActivity {
         findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddCardActivity.this, MainActivity.class);
-                AddCardActivity.this.startActivity(intent);
-                //finish();
+                //Intent intent = new Intent(AddCardActivity.this, MainActivity.class);
+                //AddCardActivity.this.startActivity(intent);
+                finish();
             }
         });
 

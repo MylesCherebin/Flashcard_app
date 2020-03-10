@@ -56,11 +56,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if (requestCode == 100){
-            String new_q = data.getExtras().getString("question");
-            String new_a = data.getExtras().getString("answer");
+            if (data != null) {
+                String new_q = data.getExtras().getString("question");
+                String new_a = data.getExtras().getString("answer");
 
-            ((TextView) findViewById(R.id.card_question)).setText(new_q);
-            ((TextView) findViewById(R.id.card_answer)).setText(new_a);
+                ((TextView) findViewById(R.id.card_question)).setText(new_q);
+                ((TextView) findViewById(R.id.card_answer)).setText(new_a);
+            }
         }
 
         Snackbar.make(findViewById(R.id.card_question),
