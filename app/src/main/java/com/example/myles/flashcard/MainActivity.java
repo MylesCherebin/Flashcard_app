@@ -62,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
                 ((TextView) findViewById(R.id.card_question)).setText(new_q);
                 ((TextView) findViewById(R.id.card_answer)).setText(new_a);
+
+                Snackbar.make(findViewById(R.id.card_question),
+                        "New Flashcard Created", Snackbar.LENGTH_SHORT).show();
             }
         }
 
-        Snackbar.make(findViewById(R.id.card_question),
-                "New Flashcard Created", Snackbar.LENGTH_SHORT).show();
 
 
     }
