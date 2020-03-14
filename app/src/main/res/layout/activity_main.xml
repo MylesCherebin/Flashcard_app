@@ -36,13 +36,13 @@
         android:visibility="invisible" />
 
     <ImageView
-    android:id="@+id/add_button"
-    android:layout_width="77dp"
-    android:layout_height="77dp"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentEnd="true"
-    android:src="@drawable/ic_iconmonstr_plus_circle_thin"
-    android:visibility="visible" />
+        android:id="@+id/add_button"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_iconmonstr_plus_circle_thin"
+        android:visibility="visible" />
 
     <ImageView
         android:id="@+id/edit_button"
@@ -51,6 +51,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/ic_iconmonstr_edit"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/next_button"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="188dp"
+        android:src="@drawable/ic_iconmonstr_next"
         android:visibility="visible" />
 
 </RelativeLayout>

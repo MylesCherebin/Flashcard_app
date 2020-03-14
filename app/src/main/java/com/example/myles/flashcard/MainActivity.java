@@ -7,12 +7,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.myles.flashcard.FlashcardDatabase;
+
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    FlashcardDatabase flashcardDatabase;
+    List<Flashcard> allFlashcards;
+    int currentCardDisplayedIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        allFlashcards = flashcardDatabase.getAllCards();
+
+        if (allFlashcards != null && allFlashcards.size() > 0){
+            ((TextView) findViewById(R.id.card_question)).setText(allFlashcards.get(0).getQuestion());
+            ((TextView) findViewById(R.id.card_answer)).setText(allFlashcards.get(0).getAnswer());
+        }
 
         findViewById(R.id.card_question).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +67,28 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.next_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentCardDisplayedIndex++;
+
+                if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
+                    currentCardDisplayedIndex = 0;
+                }
+                ((TextView) findViewById(R.id.card_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                ((TextView) findViewById(R.id.card_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                findViewById(R.id.card_answer).setVisibility(View.INVISIBLE);
+                findViewById(R.id.card_question).setVisibility(View.VISIBLE);
+
+            }
+        });
     }
+
+
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -65,9 +102,12 @@ public class MainActivity extends AppCompatActivity {
 
                 Snackbar.make(findViewById(R.id.card_question),
                         "New Flashcard Created", Snackbar.LENGTH_SHORT).show();
+
+                flashcardDatabase.insertCard(new Flashcard(new_q, new_a));
+
+
             }
         }
-
 
 
     }
