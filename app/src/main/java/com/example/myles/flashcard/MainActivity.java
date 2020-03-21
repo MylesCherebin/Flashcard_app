@@ -73,13 +73,59 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 currentCardDisplayedIndex++;
 
-                if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
+                if (currentCardDisplayedIndex >= allFlashcards.size()) {
                     currentCardDisplayedIndex = 0;
+
                 }
+
                 ((TextView) findViewById(R.id.card_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
                 ((TextView) findViewById(R.id.card_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
                 findViewById(R.id.card_answer).setVisibility(View.INVISIBLE);
                 findViewById(R.id.card_question).setVisibility(View.VISIBLE);
+
+
+
+            }
+        });
+        findViewById(R.id.delete_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentCardDisplayedIndex == 0 && allFlashcards.size() == 1){
+                    flashcardDatabase.deleteCard(((TextView) findViewById(R.id.card_question)).getText().toString());
+
+                    allFlashcards = flashcardDatabase.getAllCards();
+
+                    ((TextView) findViewById(R.id.card_question)).setText("No Flashcards, Please Add Some :)");
+                    ((TextView) findViewById(R.id.card_answer)).setText("");
+                    findViewById(R.id.card_answer).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.card_question).setVisibility(View.VISIBLE);
+
+
+                }
+
+                else if (currentCardDisplayedIndex == allFlashcards.size() - 1){
+                    currentCardDisplayedIndex = currentCardDisplayedIndex - 1;
+
+                    flashcardDatabase.deleteCard(((TextView) findViewById(R.id.card_question)).getText().toString());
+
+                    allFlashcards = flashcardDatabase.getAllCards();
+
+                    ((TextView) findViewById(R.id.card_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                    ((TextView) findViewById(R.id.card_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                    findViewById(R.id.card_answer).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.card_question).setVisibility(View.VISIBLE);
+                }
+                else{
+                    flashcardDatabase.deleteCard(((TextView) findViewById(R.id.card_question)).getText().toString());
+
+                    allFlashcards = flashcardDatabase.getAllCards();
+
+                     ((TextView) findViewById(R.id.card_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+                    ((TextView) findViewById(R.id.card_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+                    findViewById(R.id.card_answer).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.card_question).setVisibility(View.VISIBLE);
+                }
+
 
             }
         });
